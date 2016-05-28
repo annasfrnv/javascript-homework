@@ -128,7 +128,7 @@ console.log(students);
 console.log(users);
  
 
-Получить последний элемент массива
+//Получить последний элемент массива
 var arr = [1,2,3,4,5,6];
 
 var length = arr.length - 1 ;
@@ -184,6 +184,113 @@ for(var i = 0; i < arr.length; i++) {
 }
 
 console.log(sum);
+
+//Добавить класс в строку
+
+var obj = {
+  className: 'open menu'
+}
+
+function addClass(obj, cls) {
+
+	var tempArray = [];
+
+	var tempArray = obj.className.split(' ');
+
+	if(tempArray.indexOf(cls) == -1) {
+		tempArray.push(cls);
+	}
+
+
+	obj.className = tempArray.join(" ");
+
+
+}
+
+addClass(obj, 'new'); // obj.className='open menu new'
+addClass(obj, 'open'); // без изменений (класс уже существует)
+addClass(obj, 'me'); // obj.className='open menu new me'
+console.log(obj);
+
+//Функция removeClass
+
+var obj = {
+  className: 'open menu'
+};
+
+function removeClass(obj, cls) {
+	var tempArray = [];
+
+	tempArray = obj.className.split(" ");
+	for( var i = 0; i < tempArray.length; i++) {
+		if(tempArray[i] === cls) {
+			delete tempArray[i];
+		}
+	}
+
+	console.log(tempArray);
+}
+
+
+removeClass(obj, 'open'); // obj.className='menu'
+
+
+// Напишите функцию sum, которая работает так: sum(a)(b) = a+b.
+
+// Да, именно так, через двойные скобки (это не опечатка). Например:
+
+sum(1)(2) = 3
+sum(5)(-1) = 4
+
+function getSum(a) {
+
+	return function(b) {
+		var sum = a + b;
+		return sum;
+	}
+}
+
+alert(getSum(1)(2));
+
+
+// Проверка на аргумент-undefined
+
+function f(x) {
+  if(arguments.length !== 0) {
+  	console.log(1);
+  }else {
+  	console.log(0);
+  }
+}
+
+f(undefined); // 1
+f(); // 0
+
+
+//Сумма аргументов
+
+function sum() {
+	var sum = 0;
+	for(var i = 0; i < arguments.length; i++) {
+		sum += arguments[i];
+	}
+
+	console.log(sum);
+
+}
+
+sum(); //= 0
+sum(1); //= 1
+sum(1, 2); //= 3
+sum(1, 2, 3); //= 6
+sum(1, 2, 3, 4); //= 10
+
+
+
+
+
+
+
 
 
 
