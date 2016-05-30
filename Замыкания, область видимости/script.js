@@ -1,3 +1,5 @@
+"use strict";
+
 //Сумма через замыкание
 
 function sum(a){
@@ -68,6 +70,84 @@ function byField(field) {
     }
 
 }
+
+
+users.sort(byField('name'));
+
+users.forEach(function(user) {
+  console.log( user.name );
+}); // Вася, Маша, Петя
+
+users.sort(byField('age'));
+
+users.forEach(function(user) {
+  console.log( user.name );
+}); // Маша, Вася, Петя
+
+
+//Фильтрация через функцию
+
+function filter(arr, func){
+
+	var newArr = [];
+
+	for(var i = 0; i < arr.length; i++) {
+		newArr.push(arr[i]);
+	}
+
+
+	return newArr;
+
+}
+
+function inBetween(a,b) {
+
+
+}
+
+
+function inArray() {
+
+}
+
+
+var arr = [1, 2, 3, 4, 5, 6, 7];
+
+alert(filter(arr, function(a) {
+  return a % 2 == 0
+})); // 2,4,6
+
+alert( filter(arr, inBetween(3, 6)) ); // 3,4,5,6
+
+alert( filter(arr, inArray([1, 2, 10])) ); // 1,2
+
+
+
+//армия функций
+function makeArmy() {
+
+  var shooters = [];
+
+  for (var i = 0; i < 10; i++) {
+   	var shooter = function me() {
+      alert( me.i );
+    };
+    shooter.i = i;
+
+     shooters.push(shooter);
+   
+  }
+
+  return shooters;
+
+  console.log(shooters);
+}
+
+var army = makeArmy();
+
+army[0](); // стрелок выводит 10, а должен 0
+army[5](); // стрелок выводит 10...
+// .. все стрелки выводят 10 вместо 0,1,2...9
 
 
 
