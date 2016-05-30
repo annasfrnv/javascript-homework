@@ -128,9 +128,9 @@ function makeArmy() {
 
   var shooters = [];
 
-  for (var i = 0; i < 10; i++) {
-   	var shooter = function me() {
-      alert( me.i );
+  for (let i = 0; i < 10; i++) {
+   	var shooter = function() {
+      alert( i );
     };
     shooter.i = i;
 
