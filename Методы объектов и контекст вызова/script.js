@@ -104,6 +104,23 @@ alert( "Произведение=" + calculator.mul() );
 
 
 
+//Создать Accumulator при помощи конструктора
+
+function Accumulator(startingValue) {
+	this.value = startingValue;
+	this.read = function() {
+		var input = +prompt("Введите значение");
+		this.value += input;
+
+	}
+}
+
+var accumulator = new Accumulator(1); // начальное значение 1
+accumulator.read(); // прибавит ввод prompt к текущему значению
+accumulator.read(); // прибавит ввод prompt к текущему значению
+alert( accumulator.value ); // выведет текущее значение
+
+
 
 
 
