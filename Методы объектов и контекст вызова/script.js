@@ -120,6 +120,73 @@ accumulator.read(); // прибавит ввод prompt к текущему зн
 accumulator.read(); // прибавит ввод prompt к текущему значению
 alert( accumulator.value ); // выведет текущее значение
 
+function powerCalc(name, func) {
+
+	this.calculate = function(string) {
+		var tempArr = string.split(" "); // ["2", "+", "3"]
+		var a = tempArr[0];
+		var op = tempArr[1];
+		var b = tempArr[2];
+
+		if(op == "+") {
+			return	parseInt(a) + parseInt(b);
+		}
+
+		if(op == "-") {
+			return	a - b;
+		}
+
+	}
+
+
+}
+
+var newCalc = new powerCalc;
+
+var result = newCalc.calculate("2 + 3");
+console.log( result ); // 8
+
+
+
+function User(fullName) {
+  	this.fullName = fullName;
+
+	Object.defineProperties(this, {
+
+		firstName: {
+		    get: function() {
+		     	return this.fullName.split(' ')[0];
+		    },
+
+		    set: function(newFirstName) {
+		    	this.fullName = newFirstName + " " + this.lastName;
+		    }
+		},
+
+		lastName: {
+			get: function() {
+				return this.fullName.split(' ')[1];
+			},
+
+			set: function(newLastName) {
+		    	this.fullName = this.firstName + " " + newLastName;
+		    }
+
+		}
+	})
+}
+
+
+var vasya = new User("Василий Попкин");
+
+// чтение firstName/lastName
+console.log( vasya.firstName ); // Василий
+console.log( vasya.lastName ); // Попкин
+
+// запись в lastName
+vasya.lastName = 'Сидоров';
+
+console.log( vasya.fullName ); // Василий Сидоров
 
 
 
