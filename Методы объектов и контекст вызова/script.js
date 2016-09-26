@@ -189,6 +189,32 @@ vasya.lastName = 'Сидоров';
 console.log( vasya.fullName ); // Василий Сидоров
 
 
+//Счетчик объектов
+
+function Article() {
+  this.created = new Date();
+  this.count++;
+
+  this.last = this.created;
+
+
+  showStats = function () {
+		console.log("всего: " + this.count + ", Последняя: " + last);
+	}
+}
+
+
+
+new Article();
+new Article();
+
+Article.showStats(); // Всего: 2, Последняя: (дата)
+
+new Article();
+
+Article.showStats(); // Всего: 3, Последняя: (дата)
+
+
 
 
 
